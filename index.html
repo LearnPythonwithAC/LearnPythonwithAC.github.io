@@ -1,26 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta name="description" content="Hello world demo written in Brython www.brython.info">
-<meta name="keywords" content="Python,Brython">
-<meta charset="iso-8859-1">
-<title>Hello world</title>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.7.1/brython.min.js"></script>
-<script type="text/python" src="show_source.py"></script>
-</head>
+  <body onload='brython()'>
+    <script src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython.js"></script>
+    <script src='https://cdn.rawgit.com/brython-dev/brython/3.3.1/www/src/brython_stdlib.js'></script>
 
-<body onload="brython(1)">
+    <button id='hello_button'>Click me!</button>
 
-<script type="text/python">
+    <script type='text/python'>
 from browser import document, alert
+from random import randint
+def hello(event):
+    a = randint(0,100)
+    alert(a)
+    print('Random number picked is',a)
+    
+document['hello_button'].bind('click', hello)
+    </script>
 
-def echo(ev):
-    alert("Hello {} !".format(document["zone"].value))
-
-document["test"].bind("click", echo)
-</script>
-<p>Your name is : <input id="zone" autocomplete="off">
-<button id="test">clic !</button>
-</body>
-
+  </body>
 </html>
